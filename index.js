@@ -132,7 +132,7 @@ console.log(`Beşyüzden Küçük Sayılar: ${besyuzdenkucuksayilar}`);
 
 let siralisayilar=sayilar.sort((a,b) => (a-b));
 console.log(`Beşyüzden Küçük Sıralı Sayılar: ${siralisayilar}`);
-
+ 
 // 3f çözümü
 
 let tekraredensayilar = [];
