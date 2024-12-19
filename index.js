@@ -39,7 +39,7 @@ const sayilar = [
 function KareninAlani(kenaruzunlugu) {
   return kenaruzunlugu * kenaruzunlugu;
 }
-
+console.log(KareninAlani(10));
 /* (Oto test yok) Yukarıdaki KareninAlani fonksiyonunu kenar uzunluğu = 10 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
 /* GÖREV 1:  
@@ -50,10 +50,10 @@ function KareninAlani(kenaruzunlugu) {
 	4. Hesaplanan çemberin çevresi döndürülecektir.
 */
 
-function CemberinCevresi(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinCevresi(yaricap) {
+  return 2*pi*yaricap;
 }
-
+console.log(CemberinCevresi(5));
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
 /* 	GÖREV 2:  
@@ -64,9 +64,10 @@ function CemberinCevresi(/* kodlar buraya */) {
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function CemberinAlani(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinAlani(yaricap, pi) {
+  return pi*Math.pow(yaricap,2);
 }
+console.log(CemberinAlani(15));
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
@@ -89,37 +90,67 @@ function CemberinAlani(/* kodlar buraya */) {
 
 /*  (oto test yok) sayilar dizisi içinde kaç adet sayı olduğunu konsola yazdırın */
 
-let ucetambolunenler,
-  enkucuk,
-  enbuyuk,
-  ucebolunenlerintoplami,
-  besyuzdenkucuksayilar,
-  siralisayilar,
-  tekraredensayilar;
-
 // 3a çözümü
-
-/* kodlar buraya */
+let   enkucuk=sayilar[0];
+let enbuyuk=sayilar[0];
+for(i=0; i< sayilar.length; i++) {
+  if (sayilar[i] < enkucuk) {
+    enkucuk = sayilar[i];  
+  }
+  if (sayilar[i] > enbuyuk) {
+    enbuyuk = sayilar[i];  
+  }
+}
+console.log(`En Küçük: ${enkucuk}`);
+console.log(`En Büyük: ${enbuyuk}`);
 
 // 3b çözümü:
 
-/* kodlar buraya */
+let ucetambolunenler = [];
+sayilar.forEach((sayi)=> { if (sayi%3===0) {
+  ucetambolunenler.push(sayi)
+  } 
+} )
+  console.log("3'ün Tam Katı Olan Sayılar:", ucetambolunenler)
 
 // 3c çözümü:
 
-/* kodlar buraya */
+let ucebolunenlerintoplami = ucetambolunenler.reduce((toplam, sayi) => {
+  return toplam + sayi; },0)
+  console.log("3'ün Tam Katı Olan Sayıların Toplamı:", ucebolunenlerintoplami);
 
 // 3d çözümü
 
-/* kodlar buraya */
-
+let besyuzdenkucuksayilar=[];
+sayilar.filter((sayi) => {
+  if (sayi<500){
+    besyuzdenkucuksayilar.push(sayi);
+  }
+});
+console.log(`Beşyüzden Küçük Sayılar: ${besyuzdenkucuksayilar}`);
 // 3e çözümü
 
-/* kodlar buraya */
+let siralisayilar=sayilar.sort((a,b) => (a-b));
+console.log(`Beşyüzden Küçük Sıralı Sayılar: ${siralisayilar}`);
 
 // 3f çözümü
 
-/* kodlar buraya */
+let tekraredensayilar = [];
+let tekrarSayilari = {};
+sayilar.forEach(sayi => {
+  if (tekrarSayilari[sayi]) {
+    tekrarSayilari[sayi] +=1;
+  } else {
+    tekrarSayilari[sayi] = 1;
+  }
+});
+for (let sayi in tekrarSayilari) {
+  if (tekrarSayilari[sayi] > 1) {  
+let tekrarString = `${sayi} sayısı ${tekrarSayilari[sayi]} kere tekrar edilmiştir`;
+    tekraredensayilar.push(tekrarString);
+}
+}
+console.log("Tekrar Eden Sayılar:", tekraredensayilar);
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 
